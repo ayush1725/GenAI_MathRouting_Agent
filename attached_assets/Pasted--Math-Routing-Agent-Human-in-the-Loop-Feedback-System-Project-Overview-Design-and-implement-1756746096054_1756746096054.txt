@@ -1,0 +1,140 @@
+# Math Routing Agent: Human-in-the-Loop Feedback System
+
+## Project Overview
+Design and implement an Agentic-RAG architecture system that functions as a mathematical professor, providing step-by-step solutions to mathematical problems with intelligent routing between knowledge base and web search capabilities.
+
+## Core Requirements
+
+### 1. AI Gateway & Guardrails
+- **Task**: Implement input/output guardrails focused on educational mathematics content only
+- **Requirements**:
+  - Research and integrate proper AI gateway guardrails
+  - Filter content to ensure only mathematics-related queries are processed
+  - Implement privacy protection mechanisms
+  - Block inappropriate or non-educational content
+
+### 2. Knowledge Base Creation
+- **Task**: Build a vector database for mathematical content retrieval
+- **Requirements**:
+  - Select appropriate mathematical dataset (suggestions: Khan Academy problems, textbook exercises, competition math problems)
+  - Store in VectorDB (Qdrant or Weaviate recommended)
+  - Implement efficient similarity search for question matching
+  - Generate step-by-step solutions for retrieved content
+  - **Deliverable**: Provide 2-3 sample questions that exist in your knowledge base
+
+### 3. Web Search Integration with MCP
+- **Task**: Implement web search for questions not in knowledge base
+- **Requirements**:
+  - **MANDATORY**: Use Model Context Protocol (MCP)
+  - Integrate web search (Tavily, Exa, or Serper)
+  - Build extraction pipeline for mathematical content
+  - Implement fallback mechanisms for unavailable content
+  - Ensure no incorrect results are provided
+  - **Deliverable**: Provide 2-3 sample questions NOT in knowledge base that require web search
+
+### 4. Human-in-the-Loop Mechanism
+- **Task**: Create feedback system for continuous improvement
+- **Requirements**:
+  - Design evaluation/feedback agent layer
+  - Implement human feedback collection interface
+  - Build response refinement system based on feedback
+  - Enable self-learning capabilities
+  - **Bonus**: Use DSPy library for implementation
+
+### 5. Application Development
+- **Task**: Create full-stack application
+- **Requirements**:
+  - Backend: FastAPI
+  - Frontend: React
+  - RESTful API endpoints
+  - User-friendly interface for math problem input
+  - Display step-by-step solutions clearly
+
+## Technical Architecture
+
+### Suggested Tech Stack:
+- **Agent Frameworks**: LangGraph, LlamaIndex, AutoGen, or CrewAI
+- **Vector Database**: Qdrant or Weaviate
+- **Web Search**: Tavily, Exa, or Serper
+- **MCP Integration**: Required for web search capabilities
+- **Feedback System**: DSPy (bonus points)
+- **Backend**: FastAPI
+- **Frontend**: React
+
+### System Flow:
+1. User inputs mathematical question
+2. AI Gateway applies guardrails
+3. System checks knowledge base first
+4. If found: Retrieve and generate step-by-step solution
+5. If not found: Perform web search via MCP
+6. Generate educational response
+7. Present to user with feedback mechanism
+8. Collect human feedback for improvement
+
+## Deliverables Required
+
+### 1. Final Proposal (PDF)
+Include detailed sections on:
+- **Input & Output Guardrails**: Approach taken and reasoning
+- **Knowledge Base**: Dataset details with 2-3 sample questions
+- **Web Search/MCP Setup**: Strategy and 2-3 non-KB questions
+- **Human-in-the-Loop**: Detailed workflow explanation
+- **Bonus**: JEE Bench benchmark results (if implemented)
+
+### 2. Source Code
+- Complete implementation
+- Configuration files
+- Documentation
+- Setup scripts
+
+### 3. Demo Video
+- Architecture flowchart walkthrough
+- Live system demonstration
+- Output examples
+
+## Bonus Challenges
+
+### JEE Bench Evaluation
+- Implement benchmarking against JEE Bench dataset
+- Provide performance metrics and analysis
+- Include benchmark execution script
+
+## Evaluation Criteria Focus Areas
+
+1. **Efficient Routing**: Seamless switching between knowledge base and web search
+2. **Guardrails Functionality**: Proper content filtering and privacy protection
+3. **Feedback Mechanism**: Effective human-in-the-loop implementation
+4. **Feasibility**: Practical and implementable solution design
+5. **Documentation Quality**: Clear, actionable proposal with insights
+
+## Implementation Steps
+
+1. **Phase 1**: Set up basic architecture with agent framework
+2. **Phase 2**: Implement knowledge base and vector search
+3. **Phase 3**: Integrate MCP for web search capabilities
+4. **Phase 4**: Add AI gateway and guardrails
+5. **Phase 5**: Build human feedback system
+6. **Phase 6**: Develop FastAPI backend and React frontend
+7. **Phase 7**: Testing and benchmarking
+8. **Phase 8**: Documentation and demo creation
+
+## Sample Questions to Test
+
+### Knowledge Base Questions (provide your own):
+- Example: "Solve the quadratic equation x² + 5x + 6 = 0"
+- Example: "Find the derivative of f(x) = 3x³ + 2x² - 5x + 1"
+
+### Web Search Questions (provide your own):
+- Example: "Explain the latest developments in topology optimization"
+- Example: "What are the applications of quantum mathematics in cryptography?"
+
+## Success Metrics
+- Accurate mathematical solutions
+- Proper routing decisions
+- Effective guardrail filtering
+- Quality human feedback integration
+- User-friendly interface
+- Fast response times
+- Comprehensive documentation
+
+Start by choosing your preferred tech stack and then systematically implement each component, ensuring thorough testing at each phase.
