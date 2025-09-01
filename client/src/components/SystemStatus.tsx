@@ -80,14 +80,14 @@ export default function SystemStatus() {
   return (
     <div className="space-y-6">
       {/* System Status */}
-      <Card>
+      <Card className="glass-card border border-primary/20">
         <CardContent className="p-6">
-          <h3 className="text-lg font-semibold text-foreground mb-4">System Status</h3>
+          <h3 className="text-lg font-semibold gradient-text mb-4">System Status</h3>
           
           <div className="space-y-4">
             <div className="flex items-center justify-between">
               <div className="flex items-center space-x-2">
-                <div className={`w-2 h-2 rounded-full ${getStatusColor(status?.vectorDatabase || 'offline')}`}></div>
+                <div className={`w-2 h-2 rounded-full pulse-indicator ${getStatusColor(status?.vectorDatabase || 'offline')}`}></div>
                 <span className="text-sm text-foreground">Vector Database</span>
               </div>
               <span className="text-xs text-muted-foreground capitalize">
