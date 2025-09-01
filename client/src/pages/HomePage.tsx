@@ -1,6 +1,8 @@
+import React, { useState } from "react";
 import { Link } from "wouter";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
+import { FeatureModal } from "@/components/FeatureModal";
 import { 
   Calculator, 
   Brain, 
@@ -15,6 +17,19 @@ import {
 } from "lucide-react";
 
 export default function HomePage() {
+  const [selectedFeature, setSelectedFeature] = useState<any>(null);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const openFeatureModal = (feature: any) => {
+    setSelectedFeature(feature);
+    setIsModalOpen(true);
+  };
+
+  const closeFeatureModal = () => {
+    setIsModalOpen(false);
+    setSelectedFeature(null);
+  };
+
   const features = [
     {
       icon: Brain,
@@ -153,8 +168,9 @@ export default function HomePage() {
               return (
                 <Card 
                   key={index} 
-                  className="floating-card glass-card border border-transparent hover:border-primary/20 group cursor-pointer transition-all duration-500 hover:scale-105"
+                  className="floating-card glass-card border border-transparent hover:border-primary/20 group cursor-pointer transition-all duration-500 hover:scale-105 hover:shadow-2xl hover:shadow-primary/20"
                   style={{ animationDelay: `${index * 0.2}s` }}
+                  onClick={() => openFeatureModal(feature)}
                 >
                   <CardContent className="p-6 text-center relative overflow-hidden">
                     <div className={`w-16 h-16 mx-auto mb-6 bg-gradient-to-r ${feature.color} rounded-2xl flex items-center justify-center group-hover:rotate-12 transition-transform duration-300`}>
@@ -169,6 +185,13 @@ export default function HomePage() {
                     
                     {/* Hover Effect Background */}
                     <div className="absolute inset-0 bg-gradient-to-r from-primary/5 to-secondary/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300 -z-10"></div>
+                    
+                    {/* Click Indicator */}
+                    <div className="absolute bottom-2 right-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                      <div className="w-6 h-6 rounded-full bg-primary/20 flex items-center justify-center">
+                        <ArrowRight className="w-3 h-3 text-primary" />
+                      </div>
+                    </div>
                   </CardContent>
                 </Card>
               );
@@ -215,6 +238,15 @@ export default function HomePage() {
           </Card>
         </div>
       </section>
+
+      {/* Feature Modal */}
+      {selectedFeature && (
+        <FeatureModal 
+          isOpen={isModalOpen}
+          onClose={closeFeatureModal}
+          feature={selectedFeature}
+        />
+      )}
     </div>
   );
 }
