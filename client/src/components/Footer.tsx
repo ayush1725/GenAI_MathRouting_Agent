@@ -1,6 +1,13 @@
-import React from 'react';
-import { Link } from 'wouter';
-import { Brain, Github, Mail, Twitter, Linkedin, ExternalLink } from 'lucide-react';
+import React from "react";
+import { Link } from "wouter";
+import {
+  Brain,
+  Github,
+  Mail,
+  Twitter,
+  Linkedin,
+  ExternalLink,
+} from "lucide-react";
 
 export const Footer: React.FC = () => {
   const currentYear = new Date().getFullYear();
@@ -18,7 +25,8 @@ export const Footer: React.FC = () => {
               <span className="text-xl font-bold gradient-text">MathAI</span>
             </div>
             <p className="text-muted-foreground text-sm leading-relaxed mb-4">
-              Advanced mathematical reasoning system powered by AI, providing step-by-step solutions for students and educators worldwide.
+              Advanced mathematical reasoning system powered by AI, providing
+              step-by-step solutions for students and educators worldwide.
             </p>
             <div className="flex gap-3">
               <a
@@ -50,64 +58,95 @@ export const Footer: React.FC = () => {
 
           {/* Features Section */}
           <div className="col-span-1">
-            <h3 className="text-lg font-semibold text-foreground mb-4">Features</h3>
+            <h3 className="text-lg font-semibold text-foreground mb-4">
+              Features
+            </h3>
             <ul className="space-y-2">
               <li>
-                <Link href="/solver" className="text-muted-foreground hover:text-primary transition-colors text-sm">
+                <Link
+                  href="/solver"
+                  className="text-muted-foreground hover:text-primary transition-colors text-sm"
+                >
                   AI Problem Solver
                 </Link>
               </li>
               <li>
-                <Link href="/history" className="text-muted-foreground hover:text-primary transition-colors text-sm">
+                <Link
+                  href="/history"
+                  className="text-muted-foreground hover:text-primary transition-colors text-sm"
+                >
                   Solution History
                 </Link>
               </li>
               <li>
-                <span className="text-muted-foreground text-sm">Step-by-Step Solutions</span>
+                <span className="text-muted-foreground text-sm">
+                  Step-by-Step Solutions
+                </span>
               </li>
               <li>
-                <span className="text-muted-foreground text-sm">Multiple Math Domains</span>
+                <span className="text-muted-foreground text-sm">
+                  Multiple Math Domains
+                </span>
               </li>
               <li>
-                <span className="text-muted-foreground text-sm">JEE Preparation</span>
+                <span className="text-muted-foreground text-sm">
+                  JEE Preparation
+                </span>
               </li>
             </ul>
           </div>
 
           {/* Math Categories */}
           <div className="col-span-1">
-            <h3 className="text-lg font-semibold text-foreground mb-4">Math Categories</h3>
+            <h3 className="text-lg font-semibold text-foreground mb-4">
+              Math Categories
+            </h3>
             <ul className="space-y-2">
               <li>
-                <span className="text-muted-foreground text-sm">Algebra & Equations</span>
+                <span className="text-muted-foreground text-sm">
+                  Algebra & Equations
+                </span>
               </li>
               <li>
-                <span className="text-muted-foreground text-sm">Calculus & Derivatives</span>
+                <span className="text-muted-foreground text-sm">
+                  Calculus & Derivatives
+                </span>
               </li>
               <li>
-                <span className="text-muted-foreground text-sm">Geometry & Trigonometry</span>
+                <span className="text-muted-foreground text-sm">
+                  Geometry & Trigonometry
+                </span>
               </li>
               <li>
-                <span className="text-muted-foreground text-sm">Statistics & Probability</span>
+                <span className="text-muted-foreground text-sm">
+                  Statistics & Probability
+                </span>
               </li>
               <li>
-                <span className="text-muted-foreground text-sm">Integration & Limits</span>
+                <span className="text-muted-foreground text-sm">
+                  Integration & Limits
+                </span>
               </li>
             </ul>
           </div>
 
           {/* Support Section */}
           <div className="col-span-1">
-            <h3 className="text-lg font-semibold text-foreground mb-4">Support</h3>
+            <h3 className="text-lg font-semibold text-foreground mb-4">
+              Support
+            </h3>
             <ul className="space-y-2">
               <li>
-                <Link href="/about" className="text-muted-foreground hover:text-primary transition-colors text-sm">
+                <Link
+                  href="/about"
+                  className="text-muted-foreground hover:text-primary transition-colors text-sm"
+                >
                   About Us
                 </Link>
               </li>
               <li>
-                <a 
-                  href="mailto:ayushdwibedy@gmail.com" 
+                <a
+                  href="mailto:ayushdwibedy@gmail.com"
                   className="text-muted-foreground hover:text-primary transition-colors text-sm inline-flex items-center gap-1"
                 >
                   <Mail className="w-3 h-3" />
@@ -115,14 +154,18 @@ export const Footer: React.FC = () => {
                 </a>
               </li>
               <li>
-                <span className="text-muted-foreground text-sm">Privacy Policy</span>
+                <span className="text-muted-foreground text-sm">
+                  Privacy Policy
+                </span>
               </li>
               <li>
-                <span className="text-muted-foreground text-sm">Terms of Service</span>
+                <span className="text-muted-foreground text-sm">
+                  Terms of Service
+                </span>
               </li>
               <li>
-                <a 
-                  href="https://docs.google.com/document/d/1vfJdrPhEAquBg4UPGX9gwhUAgOOyFKXFZaj8hUDANLk/edit?usp=sharing" 
+                <a
+                  href="https://docs.google.com/document/d/1vfJdrPhEAquBg4UPGX9gwhUAgOOyFKXFZaj8hUDANLk/edit?usp=sharing"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-muted-foreground hover:text-primary transition-colors text-sm inline-flex items-center gap-1"
@@ -138,10 +181,13 @@ export const Footer: React.FC = () => {
         {/* Bottom Bar */}
         <div className="border-t border-border/40 mt-8 pt-8 flex flex-col sm:flex-row justify-between items-center">
           <p className="text-muted-foreground text-sm">
-            © {currentYear} MathAI. All rights reserved. Powered by advanced AI technology.
+            © {currentYear} MathAI. All rights reserved. Powered by advanced AI
+            technology.
           </p>
           <div className="flex items-center gap-4 mt-4 sm:mt-0">
-            <span className="text-muted-foreground text-xs">Made with 💜 for mathematics education</span>
+            <span className="text-muted-foreground text-xs">
+              Made with 💜 for mathematics education
+            </span>
           </div>
         </div>
       </div>
