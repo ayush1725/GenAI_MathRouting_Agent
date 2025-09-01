@@ -1,54 +1,83 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 :root {
-  --background: hsl(210, 40%, 98%);
-  --foreground: hsl(222, 84%, 5%);
-  --card: hsl(0, 0%, 100%);
-  --card-foreground: hsl(222, 84%, 5%);
-  --popover: hsl(0, 0%, 100%);
-  --popover-foreground: hsl(222, 84%, 5%);
-  --primary: hsl(210, 83%, 53%);
-  --primary-foreground: hsl(210, 40%, 98%);
-  --secondary: hsl(36, 77%, 49%);
-  --secondary-foreground: hsl(0, 0%, 100%);
-  --muted: hsl(210, 40%, 96%);
-  --muted-foreground: hsl(215, 16%, 47%);
-  --accent: hsl(210, 40%, 96%);
-  --accent-foreground: hsl(222, 84%, 5%);
+  /* Modern Mathematical Color Palette */
+  --background: hsl(240, 10%, 3.9%);
+  --foreground: hsl(0, 0%, 98%);
+  --card: hsl(240, 10%, 3.9%);
+  --card-foreground: hsl(0, 0%, 98%);
+  --popover: hsl(240, 10%, 3.9%);
+  --popover-foreground: hsl(0, 0%, 98%);
+  
+  /* Vibrant Primary Colors */
+  --primary: hsl(263, 70%, 50%);
+  --primary-foreground: hsl(0, 0%, 98%);
+  --secondary: hsl(196, 75%, 45%);
+  --secondary-foreground: hsl(240, 10%, 3.9%);
+  --accent: hsl(321, 100%, 65%);
+  --accent-foreground: hsl(240, 10%, 3.9%);
+  
+  /* Mathematical Theme Colors */
+  --math-primary: hsl(263, 70%, 50%);
+  --math-secondary: hsl(196, 75%, 45%);
+  --math-accent: hsl(321, 100%, 65%);
+  --math-success: hsl(142, 76%, 36%);
+  --math-warning: hsl(38, 92%, 50%);
+  --math-error: hsl(0, 84%, 60%);
+  
+  /* Surface Colors */
+  --muted: hsl(240, 3.7%, 15.9%);
+  --muted-foreground: hsl(240, 5%, 64.9%);
+  --border: hsl(240, 3.7%, 15.9%);
+  --input: hsl(240, 3.7%, 15.9%);
+  --ring: hsl(263, 70%, 50%);
+  
+  /* Destructive */
   --destructive: hsl(0, 84%, 60%);
-  --destructive-foreground: hsl(210, 40%, 98%);
-  --border: hsl(214, 32%, 91%);
-  --input: hsl(214, 32%, 91%);
-  --ring: hsl(210, 83%, 53%);
-  --chart-1: hsl(210, 83%, 53%);
-  --chart-2: hsl(159, 78%, 36%);
-  --chart-3: hsl(42, 93%, 56%);
-  --chart-4: hsl(147, 78%, 42%);
-  --chart-5: hsl(341, 75%, 51%);
-  --sidebar: hsl(180, 7%, 97%);
-  --sidebar-foreground: hsl(210, 25%, 8%);
-  --sidebar-primary: hsl(210, 83%, 53%);
-  --sidebar-primary-foreground: hsl(0, 0%, 100%);
-  --sidebar-accent: hsl(211, 51%, 93%);
-  --sidebar-accent-foreground: hsl(210, 83%, 53%);
-  --sidebar-border: hsl(205, 25%, 91%);
-  --sidebar-ring: hsl(210, 83%, 53%);
+  --destructive-foreground: hsl(0, 0%, 98%);
+  
+  /* Chart Colors */
+  --chart-1: hsl(263, 70%, 50%);
+  --chart-2: hsl(196, 75%, 45%);
+  --chart-3: hsl(321, 100%, 65%);
+  --chart-4: hsl(142, 76%, 36%);
+  --chart-5: hsl(38, 92%, 50%);
+  
+  /* Typography */
   --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
-  --font-serif: Georgia, serif;
-  --font-mono: 'Fira Code', 'Courier New', monospace;
-  --radius: 0.75rem;
-  --shadow-2xs: 0px 2px 0px 0px hsl(210, 83%, 53%, 0.00);
-  --shadow-xs: 0px 2px 0px 0px hsl(210, 83%, 53%, 0.00);
-  --shadow-sm: 0px 2px 0px 0px hsl(210, 83%, 53%, 0.00), 0px 1px 2px -1px hsl(210, 83%, 53%, 0.00);
-  --shadow: 0px 2px 0px 0px hsl(210, 83%, 53%, 0.00), 0px 1px 2px -1px hsl(210, 83%, 53%, 0.00);
-  --shadow-md: 0px 2px 0px 0px hsl(210, 83%, 53%, 0.00), 0px 2px 4px -1px hsl(210, 83%, 53%, 0.00);
-  --shadow-lg: 0px 2px 0px 0px hsl(210, 83%, 53%, 0.00), 0px 4px 6px -1px hsl(210, 83%, 53%, 0.00);
-  --shadow-xl: 0px 2px 0px 0px hsl(210, 83%, 53%, 0.00), 0px 8px 10px -1px hsl(210, 83%, 53%, 0.00);
-  --shadow-2xl: 0px 2px 0px 0px hsl(210, 83%, 53%, 0.00);
-  --tracking-normal: 0em;
-  --spacing: 0.25rem;
+  --font-mono: 'JetBrains Mono', 'Fira Code', 'Courier New', monospace;
+  --radius: 0.5rem;
+  
+  /* Custom Gradient Variables */
+  --gradient-primary: linear-gradient(135deg, hsl(263, 70%, 50%), hsl(196, 75%, 45%));
+  --gradient-secondary: linear-gradient(135deg, hsl(321, 100%, 65%), hsl(38, 92%, 50%));
+  --gradient-accent: linear-gradient(135deg, hsl(142, 76%, 36%), hsl(196, 75%, 45%));
+}
+
+.dark {
+  --background: hsl(240, 10%, 3.9%);
+  --foreground: hsl(0, 0%, 98%);
+  --card: hsl(240, 10%, 3.9%);
+  --card-foreground: hsl(0, 0%, 98%);
+  --popover: hsl(240, 10%, 3.9%);
+  --popover-foreground: hsl(0, 0%, 98%);
+  --primary: hsl(263, 70%, 50%);
+  --primary-foreground: hsl(0, 0%, 98%);
+  --secondary: hsl(196, 75%, 45%);
+  --secondary-foreground: hsl(240, 10%, 3.9%);
+  --muted: hsl(240, 3.7%, 15.9%);
+  --muted-foreground: hsl(240, 5%, 64.9%);
+  --accent: hsl(321, 100%, 65%);
+  --accent-foreground: hsl(240, 10%, 3.9%);
+  --destructive: hsl(0, 84%, 60%);
+  --destructive-foreground: hsl(0, 0%, 98%);
+  --border: hsl(240, 3.7%, 15.9%);
+  --input: hsl(240, 3.7%, 15.9%);
+  --ring: hsl(263, 70%, 50%);
 }
 
 .dark {
@@ -80,31 +109,287 @@
 
   body {
     @apply font-sans antialiased bg-background text-foreground;
+    overflow-x: hidden;
+  }
+  
+  html {
+    scroll-behavior: smooth;
   }
 }
 
+/* Enhanced Mathematical Expression Styling */
 .math-expression {
-  font-family: 'KaTeX_Main', 'Times New Roman', serif;
+  font-family: var(--font-mono);
   font-size: 1.1em;
-  line-height: 1.4;
+  line-height: 1.6;
+  padding: 1rem;
+  background: hsl(240, 3.7%, 15.9%);
+  border-radius: var(--radius);
+  border: 1px solid hsl(240, 3.7%, 25%);
+  position: relative;
+  overflow: hidden;
 }
 
+.math-expression::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: var(--gradient-primary);
+  animation: shimmer 2s ease-in-out infinite;
+}
+
+/* Enhanced Step Numbers with Gradient */
 .step-number {
-  background: linear-gradient(135deg, hsl(210, 83%, 53%), hsl(210, 83%, 43%));
+  background: var(--gradient-primary);
+  background-size: 200% 200%;
+  animation: gradient-shift 3s ease infinite;
+  box-shadow: 0 0 20px hsl(263, 70%, 50%, 0.3);
 }
 
+/* Enhanced Feedback Glow */
 .feedback-glow {
-  box-shadow: 0 0 0 2px hsl(210, 83%, 53%, 0.2);
+  box-shadow: 
+    0 0 0 2px hsl(263, 70%, 50%, 0.2),
+    0 0 20px hsl(263, 70%, 50%, 0.1);
+  transition: box-shadow 0.3s ease;
 }
 
+.feedback-glow:hover {
+  box-shadow: 
+    0 0 0 2px hsl(263, 70%, 50%, 0.4),
+    0 0 30px hsl(263, 70%, 50%, 0.2);
+}
+
+/* Loading Animation */
 .loading-dots::after {
   content: "";
   animation: loading-dots 1.5s infinite;
 }
 
+/* Floating Animation for Cards */
+.floating-card {
+  animation: float 6s ease-in-out infinite;
+}
+
+.floating-card:nth-child(even) {
+  animation-delay: -3s;
+}
+
+/* Pulse Animation for Status Indicators */
+.pulse-indicator {
+  animation: pulse-glow 2s ease-in-out infinite;
+}
+
+/* Gradient Text Animation */
+.gradient-text {
+  background: var(--gradient-primary);
+  background-size: 200% 200%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: gradient-shift 3s ease infinite;
+}
+
+/* Glass Morphism Effect */
+.glass-card {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 
+    0 8px 32px rgba(0, 0, 0, 0.3),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+}
+
+/* Glowing Border Animation */
+.glow-border {
+  position: relative;
+  border-radius: var(--radius);
+  background: var(--background);
+  padding: 2px;
+}
+
+.glow-border::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  padding: 2px;
+  background: var(--gradient-primary);
+  border-radius: inherit;
+  mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  mask-composite: exclude;
+  animation: rotate-border 3s linear infinite;
+}
+
+/* Matrix-style Background Animation */
+.matrix-bg {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: 
+    radial-gradient(circle at 20% 80%, hsl(263, 70%, 50%, 0.1) 0%, transparent 50%),
+    radial-gradient(circle at 80% 20%, hsl(196, 75%, 45%, 0.1) 0%, transparent 50%),
+    radial-gradient(circle at 40% 40%, hsl(321, 100%, 65%, 0.1) 0%, transparent 50%);
+  z-index: -1;
+  animation: matrix-shift 20s ease-in-out infinite;
+}
+
+/* Enhanced Button Hover Effects */
+.enhanced-button {
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+.enhanced-button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.2),
+    transparent
+  );
+  transition: left 0.5s;
+}
+
+.enhanced-button:hover::before {
+  left: 100%;
+}
+
+.enhanced-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+}
+
+/* Typing Animation */
+.typing-animation {
+  overflow: hidden;
+  border-right: 2px solid hsl(263, 70%, 50%);
+  white-space: nowrap;
+  animation: 
+    typing 3s steps(40, end),
+    blink-caret 0.75s step-end infinite;
+}
+
+/* Keyframes */
 @keyframes loading-dots {
   0%, 20% { content: ""; }
   40% { content: "."; }
   60% { content: ".."; }
   80%, 100% { content: "..."; }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+}
+
+@keyframes pulse-glow {
+  0%, 100% { 
+    box-shadow: 0 0 5px hsl(263, 70%, 50%, 0.4);
+    transform: scale(1);
+  }
+  50% { 
+    box-shadow: 0 0 20px hsl(263, 70%, 50%, 0.8);
+    transform: scale(1.05);
+  }
+}
+
+@keyframes gradient-shift {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}
+
+@keyframes shimmer {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(100%); }
+}
+
+@keyframes rotate-border {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+@keyframes matrix-shift {
+  0%, 100% { 
+    transform: translateX(0) translateY(0);
+    opacity: 0.1;
+  }
+  33% { 
+    transform: translateX(30px) translateY(-30px);
+    opacity: 0.2;
+  }
+  66% { 
+    transform: translateX(-20px) translateY(20px);
+    opacity: 0.15;
+  }
+}
+
+@keyframes typing {
+  from { width: 0; }
+  to { width: 100%; }
+}
+
+@keyframes blink-caret {
+  from, to { border-color: transparent; }
+  50% { border-color: hsl(263, 70%, 50%); }
+}
+
+/* Particle Animation */
+.particle {
+  position: absolute;
+  background: hsl(263, 70%, 50%);
+  border-radius: 50%;
+  opacity: 0.6;
+  animation: particle-float 6s ease-in-out infinite;
+}
+
+.particle:nth-child(1) { 
+  width: 6px; height: 6px; 
+  top: 20%; left: 10%;
+  animation-delay: 0s;
+}
+
+.particle:nth-child(2) { 
+  width: 4px; height: 4px; 
+  top: 60%; left: 80%;
+  animation-delay: 2s;
+}
+
+.particle:nth-child(3) { 
+  width: 8px; height: 8px; 
+  top: 80%; left: 30%;
+  animation-delay: 4s;
+}
+
+@keyframes particle-float {
+  0%, 100% { 
+    transform: translateY(0) rotate(0deg);
+    opacity: 0.6;
+  }
+  50% { 
+    transform: translateY(-100px) rotate(180deg);
+    opacity: 1;
+  }
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+  .math-expression {
+    font-size: 1rem;
+    padding: 0.75rem;
+  }
+  
+  .floating-card {
+    animation: none;
+  }
 }

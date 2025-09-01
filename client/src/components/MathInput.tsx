@@ -57,18 +57,18 @@ export default function MathInput({ onSolutionReceived, isLoading, setIsLoading 
   };
 
   return (
-    <Card>
-      <CardContent className="p-6">
+    <Card className="glass-card border-2 border-transparent hover:border-primary/20 transition-all duration-300">
+      <CardContent className="p-6 relative">
         <div className="flex items-center justify-between mb-6">
-          <h2 className="text-lg font-semibold text-foreground">Enter Mathematical Problem</h2>
+          <h2 className="text-lg font-semibold gradient-text">Enter Mathematical Problem</h2>
           <div className="flex items-center space-x-2">
             <span className="text-xs text-muted-foreground">Powered by</span>
             <div className="flex items-center space-x-1">
-              <div className="w-2 h-2 bg-primary rounded-full"></div>
+              <div className="w-2 h-2 bg-primary rounded-full pulse-indicator"></div>
               <span className="text-xs font-medium text-primary">Vector DB</span>
             </div>
             <div className="flex items-center space-x-1">
-              <div className="w-2 h-2 bg-secondary rounded-full"></div>
+              <div className="w-2 h-2 bg-secondary rounded-full pulse-indicator" style={{animationDelay: '1s'}}></div>
               <span className="text-xs font-medium text-secondary">Web Search</span>
             </div>
           </div>
@@ -117,7 +117,7 @@ export default function MathInput({ onSolutionReceived, isLoading, setIsLoading 
             <Button
               onClick={handleSolveProblem}
               disabled={isLoading || !problem.trim()}
-              className="flex items-center space-x-2"
+              className="enhanced-button flex items-center space-x-2 bg-gradient-to-r from-primary to-secondary hover:from-primary/90 hover:to-secondary/90"
               data-testid="button-solve"
             >
               <Play className="w-4 h-4" />
@@ -127,10 +127,10 @@ export default function MathInput({ onSolutionReceived, isLoading, setIsLoading 
         </div>
 
         {/* Guardrails Status */}
-        <div className="mt-6 p-4 bg-muted rounded-lg border border-border">
+        <div className="mt-6 p-4 glass-card rounded-lg border border-green-500/20">
           <div className="flex items-center space-x-3">
-            <div className="w-8 h-8 bg-green-100 rounded-full flex items-center justify-center">
-              <Shield className="text-green-600 w-4 h-4" />
+            <div className="w-8 h-8 bg-green-500/20 rounded-full flex items-center justify-center pulse-indicator">
+              <Shield className="text-green-400 w-4 h-4" />
             </div>
             <div>
               <h4 className="text-sm font-medium text-foreground">AI Guardrails Active</h4>

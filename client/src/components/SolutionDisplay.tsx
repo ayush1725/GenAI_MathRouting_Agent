@@ -44,13 +44,13 @@ export default function SolutionDisplay({ solution, isLoading }: SolutionDisplay
   const { solution: solutionData, source, responseTime, category } = solution;
 
   return (
-    <Card>
+    <Card className="glass-card">
       <CardContent className="p-6">
         <div className="flex items-center justify-between mb-6">
-          <h2 className="text-lg font-semibold text-foreground">Solution</h2>
+          <h2 className="text-lg font-semibold gradient-text">Solution</h2>
           <div className="flex items-center space-x-2">
             <div className="flex items-center space-x-1">
-              <div className={`w-2 h-2 rounded-full ${source === 'knowledge_base' ? 'bg-primary' : 'bg-secondary'}`}></div>
+              <div className={`w-2 h-2 rounded-full pulse-indicator ${source === 'knowledge_base' ? 'bg-primary' : 'bg-secondary'}`}></div>
               <span className={`text-xs font-medium ${source === 'knowledge_base' ? 'text-primary' : 'text-secondary'}`}>
                 {source === 'knowledge_base' ? 'Knowledge Base' : 'Web Search'}
               </span>
@@ -64,12 +64,12 @@ export default function SolutionDisplay({ solution, isLoading }: SolutionDisplay
 
         {/* Web Search Notice */}
         {source === 'web_search' && (
-          <div className="bg-yellow-50 border border-yellow-200 p-4 rounded-lg mb-6">
+          <div className="glass-card border border-yellow-500/20 p-4 rounded-lg mb-6">
             <div className="flex items-start space-x-3">
-              <Info className="text-yellow-600 w-4 h-4 mt-0.5" />
+              <Info className="text-yellow-400 w-4 h-4 mt-0.5 pulse-indicator" />
               <div>
-                <h4 className="text-sm font-medium text-yellow-800 mb-1">Advanced Topic</h4>
-                <p className="text-sm text-yellow-700">
+                <h4 className="text-sm font-medium text-yellow-400 mb-1">Advanced Topic</h4>
+                <p className="text-sm text-muted-foreground">
                   This problem wasn't found in our knowledge base. I've searched the web to provide you with the most current information.
                 </p>
               </div>
@@ -101,12 +101,12 @@ export default function SolutionDisplay({ solution, isLoading }: SolutionDisplay
 
         {/* Final Answer */}
         <div className="mt-6">
-          <div className="bg-green-50 border border-green-200 p-4 rounded-lg">
+          <div className="glass-card border border-green-500/20 p-4 rounded-lg glow-border">
             <div className="flex items-center space-x-2 mb-2">
-              <CheckCircle className="text-green-600 w-4 h-4" />
-              <span className="text-sm font-medium text-green-800">Final Answer</span>
+              <CheckCircle className="text-green-400 w-4 h-4 pulse-indicator" />
+              <span className="text-sm font-medium text-green-400">Final Answer</span>
             </div>
-            <div className="math-expression text-green-800 text-lg" data-testid="text-final-answer">
+            <div className="math-expression text-foreground text-lg font-mono" data-testid="text-final-answer">
               {solutionData.finalAnswer}
             </div>
           </div>
@@ -127,12 +127,12 @@ export default function SolutionDisplay({ solution, isLoading }: SolutionDisplay
         )}
 
         {/* Verification Note */}
-        <div className="mt-6 p-4 bg-blue-50 border border-blue-200 rounded-lg">
+        <div className="mt-6 p-4 glass-card border border-blue-500/20 rounded-lg">
           <div className="flex items-start space-x-3">
-            <Info className="text-blue-600 w-4 h-4 mt-0.5" />
+            <Info className="text-blue-400 w-4 h-4 mt-0.5 pulse-indicator" />
             <div>
-              <h4 className="text-sm font-medium text-blue-800 mb-1">Verification</h4>
-              <p className="text-sm text-blue-700">
+              <h4 className="text-sm font-medium text-blue-400 mb-1">Verification</h4>
+              <p className="text-sm text-muted-foreground">
                 Always verify mathematical solutions by substituting back into the original equation or checking the logic of each step.
               </p>
             </div>
