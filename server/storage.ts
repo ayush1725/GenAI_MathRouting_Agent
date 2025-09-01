@@ -193,7 +193,9 @@ export class MemStorage implements IStorage {
     const feedback: FeedbackEntry = { 
       ...insertFeedback, 
       id,
-      createdAt: new Date()
+      createdAt: new Date(),
+      problemId: insertFeedback.problemId || null,
+      comments: insertFeedback.comments || null
     };
     this.feedbackEntries.set(id, feedback);
     return feedback;
@@ -210,7 +212,8 @@ export class MemStorage implements IStorage {
     const activity: SystemActivity = { 
       ...insertActivity, 
       id,
-      createdAt: new Date()
+      createdAt: new Date(),
+      details: insertActivity.details || null
     };
     this.systemActivities.set(id, activity);
     return activity;

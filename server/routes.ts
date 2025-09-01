@@ -71,6 +71,34 @@ export async function registerRoutes(app: Express): Promise<Server> {
     }
   });
 
+  // Get math problems history
+  app.get("/api/history", async (req, res) => {
+    try {
+      const category = req.query.category as string;
+      let problems;
+      
+      if (category && category !== 'all') {
+        problems = await storage.getMathProblemsByCategory(category);
+      } else {
+        // Get all problems by getting each category
+        const categories = ['algebra', 'calculus', 'geometry', 'statistics', 'trigonometry'];
+        const allProblems = await Promise.all(
+          categories.map(cat => storage.getMathProblemsByCategory(cat))
+        );
+        problems = allProblems.flat();
+      }
+      
+      // Sort by creation date (newest first)
+      problems.sort((a, b) => 
+        new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime()
+      );
+      
+      res.json(problems);
+    } catch (error) {
+      res.status(500).json({ error: "Failed to get math problems history" });
+    }
+  });
+
   const httpServer = createServer(app);
   return httpServer;
 }

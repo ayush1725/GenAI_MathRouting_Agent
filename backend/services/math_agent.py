@@ -15,8 +15,40 @@ class MathRoutingAgent:
         self.vector_db = vector_db
         self.web_search = web_search
         self.feedback_system = feedback_system
-        self.similarity_threshold = 0.7
+        self.similarity_threshold = 0.5  # Lower threshold for better coverage
         
+    def _categorize_problem(self, problem: str) -> str:
+        """Intelligently categorize the mathematical problem."""
+        problem_lower = problem.lower()
+        
+        # Calculus indicators
+        if any(keyword in problem_lower for keyword in 
+               ["derivative", "differentiate", "integrate", "integration", "limit", "d/dx", "∫"]):
+            return "calculus"
+        
+        # Algebra indicators
+        elif any(keyword in problem_lower for keyword in 
+                ["equation", "solve", "factor", "quadratic", "linear", "polynomial", "system"]):
+            return "algebra"
+        
+        # Geometry indicators
+        elif any(keyword in problem_lower for keyword in 
+                ["triangle", "circle", "area", "volume", "perimeter", "angle", "coordinate"]):
+            return "geometry"
+        
+        # Statistics indicators
+        elif any(keyword in problem_lower for keyword in 
+                ["mean", "median", "mode", "standard deviation", "variance", "probability"]):
+            return "statistics"
+        
+        # Trigonometry indicators
+        elif any(keyword in problem_lower for keyword in 
+                ["sin", "cos", "tan", "trigonometric", "radian", "degree"]):
+            return "trigonometry"
+        
+        else:
+            return "general"
+    
     async def solve_problem(
         self, 
         problem: str, 
@@ -24,7 +56,7 @@ class MathRoutingAgent:
         include_explanations: bool = True
     ) -> Dict[str, Any]:
         """
-        Main problem-solving pipeline with intelligent routing.
+        Enhanced problem-solving pipeline with intelligent routing and categorization.
         """
         start_time = time.time()
         
@@ -33,11 +65,14 @@ class MathRoutingAgent:
         if not validation["is_valid"]:
             raise ValueError(validation.get("reason", "Invalid mathematical content"))
         
-        # Log activity
+        # Categorize the problem for better routing
+        problem_category = self._categorize_problem(problem)
+        
+        # Log activity with category
         await self.storage.create_activity(
             action="Problem submitted",
             source="user_input",
-            details=problem[:100]
+            details=f"Category: {problem_category}, Problem: {problem[:100]}"
         )
         
         try:
@@ -48,12 +83,15 @@ class MathRoutingAgent:
                 # Found similar problem in knowledge base
                 best_match = similar_problems[0]
                 
+                # Use the categorized category or fallback to match category
+                final_category = problem_category if problem_category != "general" else best_match["category"]
+                
                 # Store solution
                 problem_record = await self.storage.create_math_problem(
                     problem=problem,
                     solution=best_match["solution"],
-                    category=best_match["category"],
-                    difficulty="intermediate",
+                    category=final_category,
+                    difficulty=best_match.get("difficulty", "intermediate"),
                     source="knowledge_base"
                 )
                 
@@ -68,20 +106,21 @@ class MathRoutingAgent:
                     "solution": best_match["solution"],
                     "source": "knowledge_base",
                     "response_time": (time.time() - start_time) * 1000,
-                    "category": best_match["category"],
+                    "category": final_category,
                     "problem_id": problem_record["id"],
-                    "confidence_score": best_match["similarity"]
+                    "confidence_score": best_match["similarity"],
+                    "difficulty": best_match.get("difficulty", "intermediate")
                 }
             
             # Step 3: Fallback to web search with MCP
             search_results = await self.web_search.search_mathematical_content(problem)
             web_solution = await self.web_search.generate_solution_from_search(problem, search_results)
             
-            # Store web-based solution
+            # Store web-based solution with proper categorization
             problem_record = await self.storage.create_math_problem(
                 problem=problem,
                 solution=web_solution,
-                category="advanced",
+                category=problem_category,
                 difficulty="advanced", 
                 source="web_search"
             )
@@ -97,9 +136,10 @@ class MathRoutingAgent:
                 "solution": web_solution,
                 "source": "web_search",
                 "response_time": (time.time() - start_time) * 1000,
-                "category": "advanced",
+                "category": problem_category,
                 "problem_id": problem_record["id"],
-                "confidence_score": 0.8 if search_results else 0.3
+                "confidence_score": web_solution.get("confidence_score", 0.8 if search_results else 0.3),
+                "difficulty": "advanced"
             }
             
         except Exception as error:
