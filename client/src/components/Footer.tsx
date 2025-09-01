@@ -38,7 +38,7 @@ export const Footer: React.FC = () => {
                 <Twitter className="w-4 h-4" />
               </a>
               <a
-                href="https://linkedin.com/ayush-dwibedy/"
+                href="https://linkedin.com/in/ayush-dwibedy/"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="w-8 h-8 bg-muted rounded-lg flex items-center justify-center hover:bg-primary/20 transition-colors"
