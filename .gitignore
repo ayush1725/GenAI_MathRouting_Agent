@@ -4,3 +4,4 @@ dist
 server/public
 vite.config.ts.*
 *.tar.gz
+SYSTEM_ARCHITECTURE_EXPLAINED.txt
