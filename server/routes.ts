@@ -28,7 +28,10 @@ export async function registerRoutes(app: Express): Promise<Server> {
   app.post("/api/feedback", async (req, res) => {
     try {
       const validatedFeedback = insertFeedbackSchema.parse(req.body);
-      await mathAgent.submitFeedback(req.body.problemId, validatedFeedback);
+      await mathAgent.submitFeedback(req.body.problemId, {
+        ...validatedFeedback,
+        comments: validatedFeedback.comments || undefined
+      });
       res.json({ success: true, message: "Feedback submitted successfully" });
     } catch (error) {
       const message = error instanceof Error ? error.message : "Failed to submit feedback";
@@ -89,9 +92,11 @@ export async function registerRoutes(app: Express): Promise<Server> {
       }
       
       // Sort by creation date (newest first)
-      problems.sort((a, b) => 
-        new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime()
-      );
+      problems.sort((a, b) => {
+        const dateA = a.createdAt ? new Date(a.createdAt).getTime() : 0;
+        const dateB = b.createdAt ? new Date(b.createdAt).getTime() : 0;
+        return dateB - dateA;
+      });
       
       res.json(problems);
     } catch (error) {
