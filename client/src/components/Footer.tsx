@@ -22,7 +22,7 @@ export const Footer: React.FC = () => {
             </p>
             <div className="flex gap-3">
               <a
-                href="https://github.com"
+                href="https://github.com/ayush1725"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="w-8 h-8 bg-muted rounded-lg flex items-center justify-center hover:bg-primary/20 transition-colors"
@@ -30,7 +30,7 @@ export const Footer: React.FC = () => {
                 <Github className="w-4 h-4" />
               </a>
               <a
-                href="https://twitter.com"
+                href="https://twitter.com/ayush1725"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="w-8 h-8 bg-muted rounded-lg flex items-center justify-center hover:bg-primary/20 transition-colors"
@@ -38,7 +38,7 @@ export const Footer: React.FC = () => {
                 <Twitter className="w-4 h-4" />
               </a>
               <a
-                href="https://linkedin.com"
+                href="https://linkedin.com/ayush-dwibedy/"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="w-8 h-8 bg-muted rounded-lg flex items-center justify-center hover:bg-primary/20 transition-colors"
@@ -107,7 +107,7 @@ export const Footer: React.FC = () => {
               </li>
               <li>
                 <a 
-                  href="mailto:support@mathai.com" 
+                  href="mailto:ayushdwibedy@gmail.com" 
                   className="text-muted-foreground hover:text-primary transition-colors text-sm inline-flex items-center gap-1"
                 >
                   <Mail className="w-3 h-3" />
@@ -122,7 +122,7 @@ export const Footer: React.FC = () => {
               </li>
               <li>
                 <a 
-                  href="https://docs.example.com" 
+                  href="https://docs.google.com/document/d/1vfJdrPhEAquBg4UPGX9gwhUAgOOyFKXFZaj8hUDANLk/edit?usp=sharing" 
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-muted-foreground hover:text-primary transition-colors text-sm inline-flex items-center gap-1"
